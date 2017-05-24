@@ -1,0 +1,6 @@
+framework module Pods_SoftwareAnalysis {
+  umbrella header "Pods-SoftwareAnalysis-umbrella.h"
+
+  export *
+  module * { export * }
+}
