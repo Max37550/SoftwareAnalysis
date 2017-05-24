@@ -324,7 +324,7 @@
                         <outlet property="lastNameTextField" destination="M9g-q8-aTT" id="iCm-DL-Lgl"/>
                         <outlet property="passwordTextField" destination="beJ-FH-1HC" id="uWR-NF-Nzt"/>
                         <outlet property="signUpBtn" destination="cCV-kA-BEB" id="sH1-br-E7Y"/>
-                        <segue destination="Wwy-3V-4M1" kind="presentation" identifier="HomeUI" id="tmR-zn-uJf"/>
+                        <segue destination="Wwy-3V-4M1" kind="presentation" identifier="HomeUI" id="5Rq-pO-Sjj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q7E-ck-tm1" sceneMemberID="firstResponder"/>
@@ -336,10 +336,10 @@
             </objects>
             <point key="canvasLocation" x="1008.8" y="136.28185907046478"/>
         </scene>
-        <!--View Controller-->
+        <!--HomeVC-->
         <scene sceneID="thc-ib-AxX">
             <objects>
-                <viewController id="Wwy-3V-4M1" sceneMemberID="viewController">
+                <viewController id="Wwy-3V-4M1" customClass="HomeVC" customModule="SoftwareAnalysis" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="R52-xY-ZGS"/>
                         <viewControllerLayoutGuide type="bottom" id="vac-DI-Iln"/>
@@ -348,7 +348,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fBt-ee-0jv">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fBt-ee-0jv" userLabel="TopBar">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="daw-5m-CfP">
@@ -365,28 +365,116 @@
                                     <constraint firstItem="daw-5m-CfP" firstAttribute="centerX" secondItem="fBt-ee-0jv" secondAttribute="centerX" id="TQR-ls-TJ6"/>
                                 </constraints>
                             </view>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mYE-iK-6up">
+                                <rect key="frame" x="0.0" y="70" width="375" height="597"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="owl" translatesAutoresizingMaskIntoConstraints="NO" id="f6b-su-H9h">
+                                <rect key="frame" x="87" y="268.5" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Ewo-ss-qD5"/>
+                                    <constraint firstAttribute="width" constant="200" id="brC-Js-yjE"/>
+                                </constraints>
+                            </imageView>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo-camera" translatesAutoresizingMaskIntoConstraints="NO" id="5kc-EJ-i5h">
+                                <rect key="frame" x="310" y="602" width="45" height="45"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="SnD-id-8kV"/>
+                                    <constraint firstAttribute="width" constant="45" id="ToF-Lb-989"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="OJD-Ag-asg" appends="YES" id="6QP-Sh-u05"/>
+                                </connections>
+                            </imageView>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mountains" translatesAutoresizingMaskIntoConstraints="NO" id="Wcx-Xf-HkL">
+                                <rect key="frame" x="20" y="602" width="45" height="45"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="O4K-uF-5ZI"/>
+                                    <constraint firstAttribute="width" constant="45" id="YMX-Pp-iqa"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Ije-N0-gXq" appends="YES" id="JqA-XA-UGb"/>
+                                </connections>
+                            </imageView>
+                            <imageView contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings" translatesAutoresizingMaskIntoConstraints="NO" id="hG4-0h-rv8">
+                                <rect key="frame" x="20" y="90" width="45" height="45"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="0Qq-bk-UoG"/>
+                                    <constraint firstAttribute="width" constant="45" id="ZYX-OT-Ibu"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="SVQ-mr-ebH" appends="YES" id="UPJ-w1-Q1m"/>
+                                </connections>
+                            </imageView>
+                            <imageView contentMode="topRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logout" translatesAutoresizingMaskIntoConstraints="NO" id="y40-mR-CD9">
+                                <rect key="frame" x="310" y="90" width="45" height="45"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="PrI-1I-KUa"/>
+                                    <constraint firstAttribute="height" constant="45" id="VGY-Di-4FN"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Eg0-S1-hKX" appends="YES" id="bIW-qr-7Kf"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="mYE-iK-6up" firstAttribute="leading" secondItem="CmG-vC-Hmj" secondAttribute="leading" id="2z3-fR-pOA"/>
+                            <constraint firstItem="f6b-su-H9h" firstAttribute="centerY" secondItem="mYE-iK-6up" secondAttribute="centerY" id="8Bf-UZ-0jY"/>
+                            <constraint firstItem="hG4-0h-rv8" firstAttribute="top" secondItem="fBt-ee-0jv" secondAttribute="bottom" constant="20" id="8D9-Us-Nxx"/>
                             <constraint firstItem="fBt-ee-0jv" firstAttribute="leading" secondItem="CmG-vC-Hmj" secondAttribute="leading" id="9Il-ln-LGe"/>
                             <constraint firstAttribute="trailing" secondItem="fBt-ee-0jv" secondAttribute="trailing" id="9qk-A9-mMC"/>
+                            <constraint firstItem="vac-DI-Iln" firstAttribute="top" secondItem="mYE-iK-6up" secondAttribute="bottom" id="ASf-FT-47z"/>
+                            <constraint firstAttribute="trailing" secondItem="5kc-EJ-i5h" secondAttribute="trailing" constant="20" id="ERg-QX-pIj"/>
+                            <constraint firstItem="y40-mR-CD9" firstAttribute="top" secondItem="fBt-ee-0jv" secondAttribute="bottom" constant="20" id="HwV-Pn-xSC"/>
+                            <constraint firstAttribute="trailing" secondItem="mYE-iK-6up" secondAttribute="trailing" id="IYB-M5-FJ3"/>
+                            <constraint firstItem="mYE-iK-6up" firstAttribute="top" secondItem="fBt-ee-0jv" secondAttribute="bottom" id="Sn7-h7-bmK"/>
+                            <constraint firstItem="Wcx-Xf-HkL" firstAttribute="leading" secondItem="CmG-vC-Hmj" secondAttribute="leading" constant="20" id="e8x-XP-IUR"/>
+                            <constraint firstAttribute="trailing" secondItem="y40-mR-CD9" secondAttribute="trailing" constant="20" id="eCi-8K-QK9"/>
+                            <constraint firstItem="vac-DI-Iln" firstAttribute="top" secondItem="Wcx-Xf-HkL" secondAttribute="bottom" constant="20" id="fvR-ua-2O6"/>
+                            <constraint firstItem="f6b-su-H9h" firstAttribute="centerX" secondItem="mYE-iK-6up" secondAttribute="centerX" id="kaS-11-ltL"/>
+                            <constraint firstItem="hG4-0h-rv8" firstAttribute="leading" secondItem="CmG-vC-Hmj" secondAttribute="leading" constant="20" id="olm-dZ-NTW"/>
                             <constraint firstItem="fBt-ee-0jv" firstAttribute="top" secondItem="CmG-vC-Hmj" secondAttribute="top" id="paZ-r2-iot"/>
+                            <constraint firstItem="vac-DI-Iln" firstAttribute="top" secondItem="5kc-EJ-i5h" secondAttribute="bottom" constant="20" id="ppL-Gy-edg"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B8K-Pi-sNP" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="zmb-ql-tbV" userLabel="left-arrow">
+                <tapGestureRecognizer id="SVQ-mr-ebH" userLabel="settings">
                     <connections>
-                        <action selector="leftArrowTapped:" destination="Wwy-3V-4M1" id="c0f-nh-3Xr"/>
+                        <action selector="settingsTapped:" destination="Wwy-3V-4M1" id="QTP-ll-LvS"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Ije-N0-gXq" userLabel="image-picker">
+                    <connections>
+                        <action selector="imagePickerTapped:" destination="Wwy-3V-4M1" id="f4B-1v-B2i"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="OJD-Ag-asg" userLabel="camera">
+                    <connections>
+                        <action selector="cameraTapped:" destination="Wwy-3V-4M1" id="pUx-cn-McP"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Eg0-S1-hKX" userLabel="logout">
+                    <connections>
+                        <action selector="logout:" destination="Wwy-3V-4M1" id="0qk-fK-1Ax"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="578" y="878"/>
+            <point key="canvasLocation" x="576.79999999999995" y="877.51124437781118"/>
         </scene>
     </scenes>
     <resources>
         <image name="left-arrow" width="23" height="19"/>
+        <image name="logout" width="34" height="26"/>
+        <image name="mountains" width="45" height="45"/>
         <image name="owl" width="512" height="512"/>
+        <image name="photo-camera" width="45" height="37"/>
+        <image name="settings" width="34" height="34"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="pFy-gB-x66"/>

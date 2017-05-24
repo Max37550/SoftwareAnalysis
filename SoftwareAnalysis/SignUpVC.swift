@@ -53,6 +53,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
                         FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
                             if error != nil {
                                 print("Unable to authentificate user")
+                                print(error.debugDescription)
                             } else {
                                 print("User authentificated")
                                 self.completeSignUp(id: user!.uid, userData: ["firstName":firstName as AnyObject, "lastName":lastName as AnyObject])
@@ -72,9 +73,9 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         
         DataService.ds.createOrUpdateFirebaseDBUser(uid: id, userData: userData)
         
-        _ = KeychainWrapper.standard.set(id, forKey: "uid")
+        _ = KeychainWrapper.standard.set(id, forKey: KEY_UID)
         
-        performSegue(withIdentifier: "HomeUI", sender: nil)
+        performSegue(withIdentifier: "GoogleSettingsUI", sender: nil)
     }
    
     @IBAction func leftArrowTapped(_ sender: Any) {

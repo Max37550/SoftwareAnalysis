@@ -22,6 +22,13 @@ class LogInVC: UIViewController, UITextFieldDelegate {
         passwordTextField.delegate = self
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        //Auto login
+        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
+            performSegue(withIdentifier: "HomeUI", sender: nil)
+        }
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
@@ -48,9 +55,8 @@ class LogInVC: UIViewController, UITextFieldDelegate {
     }
     
     func completeLogIn(id: String){
+        _ = KeychainWrapper.standard.set(id, forKey: KEY_UID)
         
-        _ = KeychainWrapper.standard.set(id, forKey: "uid")
-
         performSegue(withIdentifier: "HomeUI", sender: nil)
     }
     
