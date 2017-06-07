@@ -11,6 +11,7 @@ import SwiftKeychainWrapper
 import FirebaseAuth
 import AVFoundation
 import MobileCoreServices
+import SwiftSocket
 
 class HomeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -23,6 +24,7 @@ class HomeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
 
         //Setup image picker
         imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = true
         imagePicker.delegate = self
        
     }
@@ -37,8 +39,13 @@ class HomeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
             
             if mediaType.isEqual(to: kUTTypeImage as String) {
                 if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-                    //Send the image to the server or save it for later
-                    print("Picture sent")
+                    let dataImage = UIImageJPEGRepresentation(image, 1.0)!
+                    var bool = false
+                    DispatchQueue.global().async {
+                        let socketCom = SocketCom.init(ip: "192.168.1.4", port: 8080, dataImage: dataImage)
+                        bool = socketCom.sendImage()
+                    }
+                    print("\(bool)")
                 } else {
                     print("Camera error")
                 }
@@ -46,9 +53,15 @@ class HomeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
             
         } else {
             
-            if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
                 //Send the image to the server
-                print("Picture sent")
+                let dataImage = UIImageJPEGRepresentation(image, 1.0)!
+                var bool = false
+                DispatchQueue.global().async {
+                    let socketCom = SocketCom.init(ip: "192.168.1.4", port: 8080, dataImage: dataImage)
+                    bool = socketCom.sendImage()
+                }
+                print("\(bool)")
             } else {
                 print("No valid images selected")
             }

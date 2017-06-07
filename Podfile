@@ -11,5 +11,5 @@ target 'SoftwareAnalysis' do
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
   pod 'SwiftKeychainWrapper'
-
+  pod 'SwiftSocket'
 end
